@@ -1,0 +1,135 @@
+:root {
+  --bg-color: #E2E2E2;
+  --text-color: #111111;
+  --accent: #000000;
+  --border-width: 4px;
+  --border-color: #000000;
+  --box-shadow: 6px 6px 0px #000000;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brutalist Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  border-bottom: var(--border-width) solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Input Fields */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: var(--border-width) solid var(--border-color);
+  background: white;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+input:focus {
+  background: #f0f0f0;
+  box-shadow: var(--box-shadow);
+  transform: translate(-2px, -2px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--text-color);
+  color: white;
+  border: var(--border-width) solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: white;
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
+  transform: translate(-4px, -4px);
+}
+
+/* Cards / Boxes */
+.box {
+  background: white;
+  border: var(--border-width) solid var(--border-color);
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--box-shadow);
+}
+
+th, td {
+  padding: 1rem;
+  border: var(--border-width) solid var(--border-color);
+  text-align: left;
+}
+
+th {
+  background-color: var(--text-color);
+  color: white;
+  text-transform: uppercase;
+}
+
+.navbar {
+  border-bottom: var(--border-width) solid var(--border-color);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.nav-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}

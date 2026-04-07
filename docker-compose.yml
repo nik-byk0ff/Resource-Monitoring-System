@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  timescaledb:
+    image: timescale/timescaledb-ha:pg15
+    environment:
+      POSTGRES_USER: ${DB_USER:-monitor}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-monitor_password}
+      POSTGRES_DB: ${DB_NAME:-monitoring_db}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+      - timescaledb_data:/home/postgres/pgdata/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - DB_HOST=timescaledb
+      - DB_USER=${DB_USER:-monitor}
+      - DB_PASSWORD=${DB_PASSWORD:-monitor_password}
+      - DB_NAME=${DB_NAME:-monitoring_db}
+      - DB_PORT=5432
+      - JWT_SECRET=${JWT_SECRET:-super_secret_coursework_key_123!}
+      - PORT=${BACKEND_PORT:-8080}
+    ports:
+      - "${BACKEND_PORT:-8080}:${BACKEND_PORT:-8080}"
+    depends_on:
+      - timescaledb
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    depends_on:
+      - backend
+
+volumes:
+  timescaledb_data:

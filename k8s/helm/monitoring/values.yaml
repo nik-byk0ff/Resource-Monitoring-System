@@ -1,0 +1,28 @@
+replicaCount: 1
+
+backend:
+  image:
+    repository: monitoring-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8080
+
+frontend:
+  image:
+    repository: monitoring-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+
+timescaledb:
+  image:
+    repository: timescale/timescaledb-ha
+    tag: pg15
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 5432
