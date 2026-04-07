@@ -133,3 +133,66 @@ th {
   font-size: 1.5rem;
   text-transform: uppercase;
 }
+
+/* Password Validation Checklist */
+.validation-checklist {
+  list-style: none;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border: var(--border-width) dashed var(--border-color);
+  box-shadow: var(--box-shadow);
+}
+
+.validation-checklist li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.validation-checklist li::before {
+  content: '❌';
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.validation-checklist li.valid {
+  color: #555555;
+}
+
+.validation-checklist li.valid::before {
+  content: '✅';
+}
+
+.validation-checklist li.valid::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 1.8rem;
+  width: calc(100% - 1.8rem);
+  height: 2px;
+  background-color: var(--text-color);
+  animation: strike 0.3s ease-out forwards;
+}
+
+@keyframes strike {
+  from { width: 0; }
+  to { width: calc(100% - 1.8rem); }
+}
+
+/* Base fade transitions for Vue */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
