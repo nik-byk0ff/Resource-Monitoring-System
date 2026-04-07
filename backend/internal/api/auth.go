@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/coursework/monitor-backend/internal/db"
+	"monitoring-backend/internal/db"
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 )

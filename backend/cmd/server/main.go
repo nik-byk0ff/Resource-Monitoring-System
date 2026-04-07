@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/coursework/monitor-backend/internal/api"
-	"github.com/coursework/monitor-backend/internal/db"
+	"monitoring-backend/internal/api"
+	"monitoring-backend/internal/db"
 )
 
 func corsMiddleware(next http.Handler) http.Handler {
